@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ['Louis Davis']
   spec.email = ['LouisWilliamDavis@gmail.com']
 
-  spec.summary = 'A collection of color swatches from various palettes and their corresponding hex value.'
-  spec.description = 'A collection of color swatches from various palettes and their corresponding hex value.'
+  spec.summary = 'A collection of colour swatches from various palettes and their corresponding hex value.'
+  spec.description = 'A collection of colour swatches from various palettes and their corresponding hex value.'
   spec.homepage = 'https://github.com/louiswdavis/color_swatch_collection'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 1.9.3'
