@@ -7,7 +7,7 @@ RSpec.describe ColorSwatchCollection do
 
   context 'methods' do
     it 'returns list_collections' do
-      expect(described_class.list_collections).to eq ['basic', 'html', 'ntc', 'pantone', 'roygbiv', 'x11']
+      expect(described_class.list_collections).to eq ['basic', 'html', 'ntc', 'pantone', 'roygbiv', 'x11', 'tailwind_v1', 'tailwind_v2', 'tailwind_v3', 'tailwind_v4']
     end
 
     it 'returns get_from_hex' do
@@ -24,9 +24,9 @@ RSpec.describe ColorSwatchCollection do
 
     it 'returns get_colours' do
       expect(described_class.get_colours.first).to eq({ collection: 'basic', hex: '#000000', name: 'black' })
-      expect(described_class.get_colours.length).to eq(21 + 147 + 1566 + 120 + 7 + 147)
+      expect(described_class.get_colours.length).to eq(21 + 147 + 1566 + 120 + 7 + 147 + 92 + 80 + 242 + 242)
       expect(described_class.get_colours(pick: ['roygbiv']).length).to eq 7
-      expect(described_class.get_colours(omit: ['basic', 'html', 'x11']).length).to eq(1566 + 120 + 7)
+      expect(described_class.get_colours(omit: ['basic', 'html', 'x11']).length).to eq(1566 + 120 + 7 + 92 + 80 + 242 + 242)
       expect(described_class.get_colours(pick: ['ntc'], omit: ['ntc', 'roygbiv', 'basic', 'html', 'x11']).length).to eq 0
     end
   end
