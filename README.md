@@ -14,6 +14,7 @@ The colour collections:
 - [x11](lib/color_namer_rails/x11.rb) - The list that preceded the HTML color names
 - [pantone](lib/color_namer_rails/pantone.rb)
 - [ntc](lib/color_namer_rails/ntc.rb), an [astounding collection](http://chir.ag/projects/ntc/) of over 1500 named colors.
+- [tailwind](https://tailwindcss.com/) [v1](https://v1.tailwindcss.com/docs/customizing-colors#default-color-palette), [v2](https://v2.tailwindcss.com/docs/customizing-colors), [v3](https://v3.tailwindcss.com/docs/customizing-colors), and [v4](https://tailwindcss.com/docs/colors)
 
 ## Installation
 
@@ -35,7 +36,7 @@ gem install color_swatch_collection
 
 ```ruby
 ColorSwatchCollection.list_collections
-=> ['basic', 'html', 'ntc', 'pantone', 'roygbiv', 'x11']
+=> ['basic', 'html', 'ntc', 'pantone', 'roygbiv', 'x11', 'tailwind_v1', 'tailwind_v2', 'tailwind_v3', 'tailwind_v4']
 ```
 
 ```ruby
