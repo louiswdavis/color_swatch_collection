@@ -31,6 +31,8 @@ gem install color_swatch_collection
 
 ## Usage
 
+## Methods
+
 ```ruby
 ColorSwatchCollection.list_collections
 => ['basic', 'html', 'ntc', 'pantone', 'roygbiv', 'x11']
@@ -56,6 +58,8 @@ ColorSwatchCollection.get_colours
 =>   .
 => ]
 ```
+
+## Options
 
 ### pick
 
