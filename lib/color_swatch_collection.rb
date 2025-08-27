@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/string/inflections'
 
 require_relative 'color_swatch_collection/version'
 
@@ -11,11 +12,16 @@ require_relative 'color_swatch_collection/pantone'
 require_relative 'color_swatch_collection/roygbiv'
 require_relative 'color_swatch_collection/x11'
 
+require_relative 'color_swatch_collection/tailwind/tailwind_v1'
+require_relative 'color_swatch_collection/tailwind/tailwind_v2'
+require_relative 'color_swatch_collection/tailwind/tailwind_v3'
+require_relative 'color_swatch_collection/tailwind/tailwind_v4'
+
 module ColorSwatchCollection
   class Error < StandardError; end
 
   def self.list_collections
-    ['basic', 'html', 'ntc', 'pantone', 'roygbiv', 'x11']
+    ['basic', 'html', 'ntc', 'pantone', 'roygbiv', 'x11', 'tailwind_v1', 'tailwind_v2', 'tailwind_v3', 'tailwind_v4']
   end
 
   def self.get_from_hex(colour_hex, pick: [], omit: [])
@@ -56,7 +62,7 @@ module ColorSwatchCollection
     self.list_collections.collect do |list_name|
       next unless (pick.empty? || pick.include?(list_name)) && !omit.include?(list_name)
 
-      Object.const_get("ColorSwatchCollection::#{list_name.capitalize}").colours.collect do |swatch_hash|
+      Object.const_get("ColorSwatchCollection::#{list_name.classify}").colours.collect do |swatch_hash|
         swatch_hash[:collection] = list_name
         swatch_hash
       end
@@ -69,7 +75,7 @@ module ColorSwatchCollection
     return nil if colour_input.blank?
 
     swatch_hash = nil
-    list_collection_object = Object.const_get("ColorSwatchCollection::#{list_name.capitalize}")
+    list_collection_object = Object.const_get("ColorSwatchCollection::#{list_name.classify}")
 
     if input_type == 'hex'
       swatch_hash = list_collection_object.colours.find { |swatch| swatch[:hex] == colour_input.upcase }

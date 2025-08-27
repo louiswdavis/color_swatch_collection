@@ -1,0 +1,112 @@
+# frozen_string_literal: true
+
+module ColorSwatchCollection
+  class TailwindV1
+    def self.colours
+      [
+        { name: 'black', hex: '#000000' },
+        { name: 'white', hex: '#FFFFFF' },
+
+        { name: 'gray-100', hex: '#F7FAFC' },
+        { name: 'gray-200', hex: '#EDF2F7' },
+        { name: 'gray-300', hex: '#E2E8F0' },
+        { name: 'gray-400', hex: '#CBD5E0' },
+        { name: 'gray-500', hex: '#A0AEC0' },
+        { name: 'gray-600', hex: '#718096' },
+        { name: 'gray-700', hex: '#4A5568' },
+        { name: 'gray-800', hex: '#2D3748' },
+        { name: 'gray-900', hex: '#1A202C' },
+
+        { name: 'red-100', hex: '#FFF5F5' },
+        { name: 'red-200', hex: '#FED7D7' },
+        { name: 'red-300', hex: '#FEB2B2' },
+        { name: 'red-400', hex: '#FC8181' },
+        { name: 'red-500', hex: '#F56565' },
+        { name: 'red-600', hex: '#E53E3E' },
+        { name: 'red-700', hex: '#C53030' },
+        { name: 'red-800', hex: '#9B2C2C' },
+        { name: 'red-900', hex: '#742A2A' },
+
+        { name: 'orange-100', hex: '#FFFAF0' },
+        { name: 'orange-200', hex: '#FEEBC8' },
+        { name: 'orange-300', hex: '#FBD38D' },
+        { name: 'orange-400', hex: '#F6AD55' },
+        { name: 'orange-500', hex: '#ED8936' },
+        { name: 'orange-600', hex: '#DD6B20' },
+        { name: 'orange-700', hex: '#C05621' },
+        { name: 'orange-800', hex: '#9C4221' },
+        { name: 'orange-900', hex: '#7B341E' },
+
+        { name: 'yellow-100', hex: '#FFFFF0' },
+        { name: 'yellow-200', hex: '#FEFCBF' },
+        { name: 'yellow-300', hex: '#FAF089' },
+        { name: 'yellow-400', hex: '#F6E05E' },
+        { name: 'yellow-500', hex: '#ECC94B' },
+        { name: 'yellow-600', hex: '#D69E2E' },
+        { name: 'yellow-700', hex: '#B7791F' },
+        { name: 'yellow-800', hex: '#975A16' },
+        { name: 'yellow-900', hex: '#744210' },
+
+        { name: 'green-100', hex: '#F0FFF4' },
+        { name: 'green-200', hex: '#C6F6D5' },
+        { name: 'green-300', hex: '#9AE6B4' },
+        { name: 'green-400', hex: '#68D391' },
+        { name: 'green-500', hex: '#48BB78' },
+        { name: 'green-600', hex: '#38A169' },
+        { name: 'green-700', hex: '#2F855A' },
+        { name: 'green-800', hex: '#276749' },
+        { name: 'green-900', hex: '#22543D' },
+
+        { name: 'teal-100', hex: '#E6FFFA' },
+        { name: 'teal-200', hex: '#B2F5EA' },
+        { name: 'teal-300', hex: '#81E6D9' },
+        { name: 'teal-400', hex: '#4FD1C5' },
+        { name: 'teal-500', hex: '#38B2AC' },
+        { name: 'teal-600', hex: '#319795' },
+        { name: 'teal-700', hex: '#2C7A7B' },
+        { name: 'teal-800', hex: '#285E61' },
+        { name: 'teal-900', hex: '#234E52' },
+
+        { name: 'blue-100', hex: '#EBF8FF' },
+        { name: 'blue-200', hex: '#BEE3F8' },
+        { name: 'blue-300', hex: '#90CDF4' },
+        { name: 'blue-400', hex: '#63B3ED' },
+        { name: 'blue-500', hex: '#4299E1' },
+        { name: 'blue-600', hex: '#3182CE' },
+        { name: 'blue-700', hex: '#2B6CB0' },
+        { name: 'blue-800', hex: '#2C5282' },
+        { name: 'blue-900', hex: '#2A4365' },
+
+        { name: 'indigo-100', hex: '#EBF4FF' },
+        { name: 'indigo-200', hex: '#C3DAFE' },
+        { name: 'indigo-300', hex: '#A3BFFA' },
+        { name: 'indigo-400', hex: '#7F9CF5' },
+        { name: 'indigo-500', hex: '#667EEA' },
+        { name: 'indigo-600', hex: '#5A67D8' },
+        { name: 'indigo-700', hex: '#4C51BF' },
+        { name: 'indigo-800', hex: '#434190' },
+        { name: 'indigo-900', hex: '#3C366B' },
+
+        { name: 'purple-100', hex: '#FAF5FF' },
+        { name: 'purple-200', hex: '#E9D8FD' },
+        { name: 'purple-300', hex: '#D6BCFA' },
+        { name: 'purple-400', hex: '#B794F4' },
+        { name: 'purple-500', hex: '#9F7AEA' },
+        { name: 'purple-600', hex: '#805AD5' },
+        { name: 'purple-700', hex: '#6B46C1' },
+        { name: 'purple-800', hex: '#553C9A' },
+        { name: 'purple-900', hex: '#44337A' },
+
+        { name: 'pink-100', hex: '#FFF5F7' },
+        { name: 'pink-200', hex: '#FED7E2' },
+        { name: 'pink-300', hex: '#FBB6CE' },
+        { name: 'pink-400', hex: '#F687B3' },
+        { name: 'pink-500', hex: '#ED64A6' },
+        { name: 'pink-600', hex: '#D53F8C' },
+        { name: 'pink-700', hex: '#B83280' },
+        { name: 'pink-800', hex: '#97266D' },
+        { name: 'pink-900', hex: '#702459' }
+      ]
+    end
+  end
+end
