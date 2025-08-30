@@ -1,8 +1,7 @@
 # ColorSwatchCollection
 
-[![Gem Version](https://badge.fury.io/rb/color_swatch_collection.svg)](https://badge.fury.io/rb/color_swatch_collection)
-![Static Badge](https://img.shields.io/badge/RubyGems-red?link=https%3A%2F%2Frubygems.org%2Fgems%color_swatch_collection)
-
+![Gem Version](https://badge.fury.io/rb/color_swatch_collection.svg)
+[![Static Badge](https://img.shields.io/badge/RubyGems-red)](https://rubygems.org/gems/color_swatch_collection)
 
 > Find a colour swatch from various collections.
 
