@@ -1,5 +1,7 @@
 # ColorSwatchCollection
 
+[![Gem Version](https://badge.fury.io/rb/color_swatch_collection.svg)](https://badge.fury.io/rb/color_swatch_collection)
+
 > Find a colour swatch from various collections.
 
 ColorSwatchCollection is a ruby gem package for use in ruby or other projects that provides colour swatches with their name and hex code from various collections. You can find colour swatches by providing either the name or hex code you want to search against. You can also query collection colour lists directly.
