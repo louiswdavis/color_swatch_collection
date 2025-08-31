@@ -4,6 +4,7 @@ require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/string/inflections'
 
 require_relative 'color_swatch_collection/version'
+require_relative 'color_swatch_collection/configuration'
 
 require_relative 'color_swatch_collection/basic'
 require_relative 'color_swatch_collection/html'
@@ -27,13 +28,13 @@ module ColorSwatchCollection
   def self.get_from_hex(colour_hex, pick: [], omit: [])
     found_colour = nil
 
-    self.list_collections.each do |list_name|
-      next unless (pick.empty? || pick.include?(list_name)) && !omit.include?(list_name)
+    self.list_collections.each do |collection_name|
+      next unless self.check_collection_use(pick, omit, collection_name)
 
-      found_colour = self.get_item_from_collection(colour_hex, 'hex', list_name)
+      found_colour = self.get_item_from_collection(colour_hex, 'hex', collection_name)
 
       if found_colour.present?
-        found_colour[:collection] = list_name
+        found_colour[:collection] = collection_name
         break
       end
     end
@@ -44,13 +45,13 @@ module ColorSwatchCollection
   def self.get_from_name(colour_name, pick: [], omit: [])
     found_colour = nil
 
-    self.list_collections.each do |list_name|
-      next unless (pick.empty? || pick.include?(list_name)) && !omit.include?(list_name)
+    self.list_collections.each do |collection_name|
+      next unless self.check_collection_use(pick, omit, collection_name)
 
-      found_colour = self.get_item_from_collection(colour_name, 'name', list_name)
+      found_colour = self.get_item_from_collection(colour_name, 'name', collection_name)
 
       if found_colour.present?
-        found_colour[:collection] = list_name
+        found_colour[:collection] = collection_name
         break
       end
     end
@@ -59,11 +60,11 @@ module ColorSwatchCollection
   end
 
   def self.get_colours(pick: [], omit: [])
-    self.list_collections.collect do |list_name|
-      next unless (pick.empty? || pick.include?(list_name)) && !omit.include?(list_name)
+    self.list_collections.collect do |collection_name|
+      next unless self.check_collection_use(pick, omit, collection_name)
 
-      Object.const_get("ColorSwatchCollection::#{list_name.classify}").colours.collect do |swatch_hash|
-        swatch_hash[:collection] = list_name
+      Object.const_get("ColorSwatchCollection::#{collection_name.classify}").colours.collect do |swatch_hash|
+        swatch_hash[:collection] = collection_name
         swatch_hash
       end
     end.compact.flatten
@@ -71,16 +72,26 @@ module ColorSwatchCollection
 
   private
 
-  def self.get_item_from_collection(colour_input, input_type, list_name)
+  def self.check_collection_use(pick, omit, collection_name)
+    pick = ColorSwatchCollection.configuration.default_collection_picks if pick.empty?
+    omit = ColorSwatchCollection.configuration.default_collection_omits if omit.empty?
+
+    pick = [] if pick == ['[]']
+    omit = [] if omit == ['[]']
+
+    (pick.empty? || pick.include?(collection_name)) && !omit.include?(collection_name)
+  end
+
+  def self.get_item_from_collection(colour_input, input_type, collection_name)
     return nil if colour_input.blank?
 
     swatch_hash = nil
-    list_collection_object = Object.const_get("ColorSwatchCollection::#{list_name.classify}")
+    list_collection_object = Object.const_get("ColorSwatchCollection::#{collection_name.classify}")
 
     if input_type == 'hex'
       swatch_hash = list_collection_object.colours.find { |swatch| swatch[:hex] == colour_input.upcase }
     elsif input_type == 'name'
-      if ['ntc', 'pantone'].include?(list_name)
+      if ['ntc', 'pantone'].include?(collection_name)
         swatch_hash = list_collection_object.colours.find { |swatch| swatch[:name] == colour_input.downcase.strip }
       else
         swatch_hash = list_collection_object.colours.find { |swatch| swatch[:name] == colour_input.downcase.gsub(' ', '') }
