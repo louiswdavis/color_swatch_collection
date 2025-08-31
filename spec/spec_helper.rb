@@ -13,4 +13,12 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.before(:each) do
+    ColorSwatchCollection.reset_configuration!
+  end
+
+  config.after(:each) do
+    ColorSwatchCollection.reset_configuration!
+  end
 end
