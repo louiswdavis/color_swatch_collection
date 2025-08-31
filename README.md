@@ -78,13 +78,44 @@ ColorSwatchCollection.get_colours(pick: ['basic'])
 
 ### omit
 
-The opposite of `options.pick`.
+The opposite of `options.pick` and when used alongside the `pick` option the `omit` option has precedence.
 It can be used for `get_from_hex`, `get_from_name`, or `get_colours`.
 
 ```ruby
 ColorSwatchCollection.get_from_hex('#00FF00', omit: ['html', 'pantone'])
 ColorSwatchCollection.get_from_name('blue', omit: ['ntc'])
 ColorSwatchCollection.get_colours(omit: ['ntc', 'basic'])
+```
+
+## Configuration
+
+Create an initializer file to allow you to set the collections you want to always pick or omit rather than having to set them each time you call a method:
+
+```ruby
+# config/initializers/color_swatch_collection.rb
+
+ColorSwatchCollection.configure do |config|
+  config.default_collection_picks = ['x11', 'css']
+  config.default_collection_omits = ['pantone']
+end
+```
+
+There are reader and resetter methods that can be called to view the current configuration and to reset the values
+
+```ruby
+ColorSwatchCollection.configuration
+=> <ColorSwatchCollection::Configuration @default_collection_omits=["pantone"], @default_collection_picks=["x11", "css"]>
+
+ColorSwatchCollection.reset_configuration!
+=> <ColorSwatchCollection::Configuration @default_collection_omits=[], @default_collection_picks=[]>
+```
+
+These defaults can be overridden if `pick` or `omit` are called explicitly in a method, as shown in the `Options` section.
+To unset them in a way that provides the default behaviour, all collections in `pick` and no collection in `omit`, pass '[]'.
+
+```ruby
+ColorSwatchCollection.get_from_hex('#00FF00', pick: ['[]]'])
+ColorSwatchCollection.get_from_hex('#00FF00', omit: ['[]]'])
 ```
 
 ## Development
